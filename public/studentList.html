@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+     list = [];
+        $(function () {
+            $("#students").click(function () {
+                $.ajax({
+                    url: "http://127.0.0.1:5050/getstudents",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data, status, xhr) {
+                        // Success callback function
+                       // console.log(data);
+                        list = data;
+                        console.log(list)
+                    },
+                    error: function (xhr, status, error) {
+                        // Error callback function
+                        console.log(error);
+                    }
+                });
+            })
+        })
+    </script>
+</head>
+
+<body class="container-fluid">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="mt-3" style="width: auto;">
+
+            <button class="btn btn-primary" id="students">students List</button>
+            <div class="mt-3">
+                <a href="login.html">Existing Student Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

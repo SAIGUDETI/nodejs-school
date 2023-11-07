@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+            $("#btnRegister").click(function(){
+                var studentDetails = {
+                    "StudentId":$(StudentId).val(),
+                    "Name":$(Name).val(),
+                    "Qualification":$(Qualification).val(),
+                    "Phone":$(Phone).val(),
+                    "Address":$(Address).val(),
+                    "Email":$(Email).val()
+                }
+                $.ajax({
+                    method:"POST",
+                    url:"http://127.0.0.1:5050/poststudent",
+                    data:studentDetails,                    
+                })
+                alert("Registered Successfully")
+                location.href="register.html"
+            })
+        })
+    </script>
+    <style>
+        
+    </style>
+</head>
+<body class="container-fluid">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="mt-3" style="width: auto;">
+            <h2>Student Register</h2>
+            <dl class="form-control">
+                <dt>Student Roll Number</dt>
+                <dd><input type="text" id="StudentId"></dd>
+                <dt>Student Name</dt>
+                <dd><input type="text" id="Name"></dd>
+                <dt>Education/Qualification</dt>
+                <dd><input type="text" id="Qualification"></dd>
+                <dt>Mobile Number</dt>
+                <dd><input value="+91" type="text" id="Phone"></dd>
+                <dt>Address</dt>
+                <dd><input type="text" id="Address"></dd>
+                <dt>Email Id</dt>
+                <dd><input type="text" id="Email"></dd>
+            </dl>
+            <button class="btn btn-info w-100" id="btnRegister">Register</button>
+            <div class="mt-3">
+                <a href="login.html">Existing Student Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
